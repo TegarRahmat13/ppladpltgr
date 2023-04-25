@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Rubik:wght@500;600&display=swap');
+
+:root{
+    --header-height: 3.5rem;
+
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --biru-tua:rgb(0, 43, 91);
+    --hijau-muda: rgb(21, 152, 149);
+    --hijau-tua:rgb(0, 91, 69);
+    --merah-muda:rgb(250, 152, 132);
+    --merah-tua: rgb(231, 70, 70);
+    --text-color: rgb(32, 31, 29);
+    --body-color: rgb(255, 255, 255);
+    --container-color: rgb(43, 49, 53);
+  
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: "Poppins", sans-serif;
+    --title-font: "Lora", serif;
+    --subtitle-font: "Dancing Script", cursive;
+    --home--font: 'Rubik', sans-serif;
+    --biggest-font-size: 2.25rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+  
+    /*========== Font weight ==========*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
+  
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+@media screen and (min-width: 1024px) {
+    :root {
+      --biggest-font-size: 4rem;
+      --h1-font-size: 2.25rem;
+      --h2-font-size: 1.5rem;
+      --h3-font-size: 1.25rem;
+      --normal-font-size: 1rem;
+      --small-font-size: .875rem;
+      --smaller-font-size: .813rem;
+    }
+}
+/*=============== BASE ===============*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    width: 100%;
+    height: 100%;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+    transition: background 0.4s; /* for dark mode animation */
+  }
+  
+  h1, h2, h3 {
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+    color: var(--title-color);
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+    max-width: 100%;
+    margin-inline: 1.5rem;
+}  
+.main {
+    overflow: hidden; /* For the animations */
+}
+.grid{
+    display: grid;
+    gap: 1.5rem;   
+}
+.flex{
+    display: flex;
+}
+
+/*=================== HEADER ========================== */
+.header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+    padding: 1rem 0;
+    background-color: white;
+}
+.nav{
+    position: relative;
+    display: flex;
+    height: var(--header-height);
+    justify-content: space-between;
+    align-items: center;
+}
+.nav__logo{
+    width: 80px;
+}
+.nav__list{
+    display: flex;
+    gap: 2rem;
+    transition: background .5s;
+}
+.nav__list :hover{
+    color: var(--hijau-muda);
+    transition: .3s;
+}
+.nav__item a{
+    font-weight: 600;
+}
+.nav__icon{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.sub-menu-wrap{
+    position: absolute;
+    top: 100%;
+    right: 0%;
+    width: 320px;
+    background-color: white;
+    box-shadow: -15px 10px 15px rgb(0 0 0 / 0.2); /* [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color] */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+.sub-menu-wrap.open-menu{
+    max-height: 400px;
+}
+.sub-menu{
+    padding: 1rem 1.5rem;
+}
+.user-info{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.user-info img{
+    width: 60px;
+    border-radius: 1rem;
+}
+.sub-menu hr{
+    margin-top: .8rem;
+    border: 0;
+    height: 2px;
+    background: black;
+}
+.sub__list{
+    padding-top: 1rem;
+}
+.sub__list hr{
+    margin-top: .8rem;
+    border: 0;
+    height: 2px;
+    background: black;
+}
+.sub__item{
+    padding-bottom: 1rem;
+    transition: color .3s;
+}
+.sub__item:hover{
+    color: var(--hijau-muda);
+}
+
+.item,.item_logout{
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.item_logout{
+    padding-top: .8rem;
+}
+/*==================== HOME =======================*/
+.home__container{
+    position: relative;
+}
+.home__content{
+    grid-template-columns: 1fr 1.5fr;
+    align-items: center;
+}
+.home__left{
+    margin-inline: 1.5rem;
+}
+.home__rigth-image{
+     background-image: url("../../asset/mitra/landing_page.png");
+     height: 90vh;
+     background-size: contain;
+     background-repeat: no-repeat;
+}
+.home__left h1{
+    font-size: 3rem;
+    font-weight: var(--font-semi-bold);
+    padding-bottom: 1rem;
+}
+.home__left p{
+    padding-bottom: 2rem;
+}
+.log__in{
+    display: block;
+    padding: .8rem 1.5rem;
+    border-radius: .5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    width: 300px;
+    color: var(--hijau-tua);
+    background-color:rgb(155, 236, 219);
+    cursor: pointer;
+}
+/*=================== KEMITRAAN ===============*/
+.kemitraan__section{
+    padding-top: 4rem;
+    position: relative;
+}
+.kemitraan__header{
+    display: flex;
+    justify-content: center;
+    padding-top: 4rem;
+    background-image:url("../../asset/mitra/kemitraan.png");
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.kemitraan__header-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.kemitraan__header-text h1{
+    color: var(--hijau-muda);
+    font-size: 4rem;
+    font-weight: 600;
+}
+.kemitraan__header-text p{
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.kemitraan__usaha{
+    padding-top: 4rem;
+}
+.kemitraan__list{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-bottom: 4rem;
+}
+.kemitraan__page{
+    background-color: var(--hijau-muda);
+    color: aliceblue;
+    font-weight: 500;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: background .5s;
+}
+.kemitraan__usaha-prodcut {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    row-gap: 4rem;
+    column-gap: 2rem;
+    padding-bottom: 4rem;
+}
+.usaha{
+    grid-template-columns: repeat(2,1fr);
+    background-color: white;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 0.2); /* [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color] */
+}
+.usaha-img{
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+.usaha__title{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding-bottom: .5rem;
+    padding-right: .8rem;
+}
+.usaha__title h1{
+    padding-bottom: 1rem;
+    font-weight: 600;
+}
+.usaha__title i{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.usaha__user-icon,.usaha__loc-icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .8rem;
+    padding-bottom: .8rem;
+}
+.usaha__title-but{
+    background-color: var(--hijau-muda);
+    color: aliceblue;
+    padding: .5rem .85rem;
+    border-radius: .8rem;
+    border: none;
+    display: block;
+    font-size: 1rem;
+    width: 70%;
+    cursor: pointer;
+    transition: background .3s ;
+}
+.usaha__title-but:hover{
+    background-color: var(--hijau-tua);
+}
+/*============= KEMITRAAN DETAIL ==============*/
+.kemitraanDetail__section{
+    padding-top: 4rem;
+}
+.kemitraanDetail{
+    grid-template-columns: repeat(auto-fit,minmax(200px, 1fr));
+    align-items: flex-end;
+    justify-content: center;
+    padding-top: 2.5rem;
+}
+.kemitraan-img{
+    max-height: 400px;
+}
+.kemitraanDetail__left{
+    display: flex;
+    justify-content: center;
+}
+.kemitraanDetail__right h1{
+    font-size: 4rem;
+    font-weight: 600;
+    padding-bottom: 2.5rem;
+   
+}
+.leftName__info,.leftLoc__info{
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+    font-size: 1.5rem;
+    padding-bottom: .5rem;
+    font-weight: 500;
+}
+.leftDetail__info{
+    font-weight: 500;
+    padding-bottom: 1.5rem;
+}
+.kemitraanDetail__button{
+    padding: .8rem 1.5rem;
+    background-color: var(--hijau-muda);
+    color: white;
+    font-size: 1.5rem;
+    border-radius: .5rem;
+    border: none;
+    cursor: pointer;
+    transition: background .3s;
+}
+.kemitraanDetail__button:hover{
+    background-color: var(--hijau-tua);
+}
